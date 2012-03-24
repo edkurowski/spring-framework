@@ -33,6 +33,7 @@ public abstract class CacheOperation {
 	private String condition = "";
 	private String key = "";
 	private String name = "";
+    private int timeToLive = 0;
 
 
 	public Set<String> getCacheNames() {
@@ -79,7 +80,15 @@ public abstract class CacheOperation {
 		this.name = name;
 	}
 
-	/**
+    public int getTimeToLive() {
+        return timeToLive;
+    }
+
+    public void setTimeToLive(int timeToLive) {
+        this.timeToLive = timeToLive;
+    }
+
+    /**
 	 * This implementation compares the {@code toString()} results.
 	 * @see #toString()
 	 */
@@ -123,6 +132,8 @@ public abstract class CacheOperation {
 		result.append(this.condition);
 		result.append("' | key='");
 		result.append(this.key);
+        result.append("' | timeToLive='");
+        result.append(this.timeToLive);
 		result.append("'");
 		return result;
 	}

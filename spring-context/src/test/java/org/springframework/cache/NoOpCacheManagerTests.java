@@ -48,6 +48,9 @@ public class NoOpCacheManagerTests {
 		Object key = new Object();
 		cache.put(key, new Object());
 		assertNull(cache.get(key));
+        Object key2 = new Object();
+        cache.put(key, new Object(),1000);
+        assertNull(cache.get(key2));
 		assertNull(cache.getNativeCache());
 	}
 

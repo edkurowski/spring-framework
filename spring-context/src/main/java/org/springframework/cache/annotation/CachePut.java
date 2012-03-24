@@ -16,14 +16,9 @@
 
 package org.springframework.cache.annotation;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Inherited;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
 import org.springframework.cache.Cache;
+
+import java.lang.annotation.*;
 
 /**
  * Annotation indicating that a method (or all methods on a class) trigger(s)
@@ -58,4 +53,6 @@ public @interface CachePut {
 	 * <p>Default is "", meaning the method result is always cached.
 	 */
 	String condition() default "";
+    
+    int timeToLive() default 0;
 }

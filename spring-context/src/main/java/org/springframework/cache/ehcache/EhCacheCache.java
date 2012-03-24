@@ -67,10 +67,23 @@ public class EhCacheCache implements Cache {
 	}
 
 	public void put(Object key, Object value) {
-		this.cache.put(new Element(key, value));
+		putElement(new Element(key, value));
 	}
 
-	public void evict(Object key) {
+    public void put(Object key, Object value, int timeToLive) {
+        if (timeToLive<=0) {
+            put(key,value);
+        }
+        Element element = new Element(key, value);
+        element.setTimeToLive(timeToLive);
+        putElement(element);
+    }
+    
+    private void putElement(Element element) {
+        this.cache.put(element);
+    }
+
+    public void evict(Object key) {
 		this.cache.remove(key);
 	}
 

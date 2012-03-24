@@ -103,7 +103,11 @@ public class ConcurrentMapCache implements Cache {
 		this.store.put(key, toStoreValue(value));
 	}
 
-	public void evict(Object key) {
+    public void put(Object key, Object value, int timeToLive) {
+        put(key,value);
+    }
+
+    public void evict(Object key) {
 		this.store.remove(key);
 	}
 

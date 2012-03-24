@@ -16,17 +16,17 @@
 
 package org.springframework.cache.annotation;
 
-import java.io.Serializable;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.AnnotatedElement;
-import java.util.ArrayList;
-import java.util.Collection;
-
 import org.springframework.cache.interceptor.CacheEvictOperation;
 import org.springframework.cache.interceptor.CacheOperation;
 import org.springframework.cache.interceptor.CachePutOperation;
 import org.springframework.cache.interceptor.CacheableOperation;
 import org.springframework.util.ObjectUtils;
+
+import java.io.Serializable;
+import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedElement;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Strategy implementation for parsing Spring's {@link Caching}, {@link Cacheable},
@@ -104,6 +104,7 @@ public class SpringCacheAnnotationParser implements CacheAnnotationParser, Seria
 		cuo.setCondition(caching.condition());
 		cuo.setKey(caching.key());
 		cuo.setName(ae.toString());
+        cuo.setTimeToLive(caching.timeToLive());
 		return cuo;
 	}
 
